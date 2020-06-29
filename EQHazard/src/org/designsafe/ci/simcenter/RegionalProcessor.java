@@ -79,6 +79,7 @@ public class RegionalProcessor implements ParameterChangeWarningListener
 	double[] Vs30;
 	int numThreads = 1;
 	RuptureSurface lastDistanceSurface = null;
+	ExecutorService executor = null;
 	
 	public RegionalProcessor(int numThreads)
 	{
@@ -88,6 +89,8 @@ public class RegionalProcessor implements ParameterChangeWarningListener
 			this.numThreads = 1;
 		
 		this.numThreads = numThreads;
+		executor = Executors.newFixedThreadPool(numThreads);
+
 		calc = new EQHazardCalc();
 		initERF();
 		initGMM();
@@ -104,7 +107,6 @@ public class RegionalProcessor implements ParameterChangeWarningListener
 		currentRupture = new ProbEqkRupture[numThreads];
 		
 		List<Future> futures = new ArrayList<Future>();
-		ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 
 		int start = 0;
 		for (int t = 0 ; t < numThreads; t++)
@@ -176,7 +178,6 @@ public class RegionalProcessor implements ParameterChangeWarningListener
 		Vs30 = new double[locations.length];		
 
 		List<Future> futures = new ArrayList<Future>();
-		ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 
 		int start = 0;
 		for (int t = 0 ; t < numThreads; t++)
@@ -256,7 +257,6 @@ public class RegionalProcessor implements ParameterChangeWarningListener
 		distanceJB = new double[locations.length];		
 		
 		List<Future> futures = new ArrayList<Future>();
-		ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 
 		int start = 0;
 		for (int t = 0 ; t < numThreads; t++)
@@ -312,7 +312,6 @@ public class RegionalProcessor implements ParameterChangeWarningListener
 			interEventStdDevs = new double[locations.length];
 		
 		List<Future> futures = new ArrayList<Future>();
-		ExecutorService executor = Executors.newFixedThreadPool(numThreads);
 
 		int start = 0;
 		for (int t = 0 ; t < numThreads; t++)

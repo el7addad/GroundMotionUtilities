@@ -43,7 +43,7 @@ steps:
     mavenPomFile: 'EQHazard/pom.xml' 
     goals: 'package'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: 'default'
+    jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
     
     

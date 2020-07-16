@@ -18,10 +18,7 @@ strategy:
       imageName: "ubuntu-18.04"
       CONAN_GCC_VERSIONS: 7
       CONAN_CLANG_VERSIONS: ""
-    macHighSierra:
-      imageName: "macos-10.13"
-      CONAN_APPLE_CLANG_VERSIONS: 10.0
-    macMojave:
+    macos:
       imageName: "macos-10.14"
       CONAN_APPLE_CLANG_VERSIONS: 11.0
     windows:
